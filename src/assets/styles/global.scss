@@ -1,0 +1,11 @@
+@import "font-faces/font-faces";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans;
+  font-size: 16px;
+  font-weight: 400;
+}

@@ -1,3 +1,8 @@
+import { Currencies } from "ts-money"
+
+type TCurrencies = typeof Currencies
+export type TCurrenciesSymbols = keyof TCurrencies
+
 type TCoinInfo = {
   Id: string
   Name: string
@@ -117,7 +122,7 @@ type TDisplayCoin = {
   IMAGEURL: string
 }
 
-export type TCoin<TCurrency extends string = "USD"> = {
+export type TCoin<TCurrency extends TCurrenciesSymbols = "USD"> = {
   CoinInfo: TCoinInfo
   RAW: {
     [key in TCurrency]: TRawCoin

@@ -7,5 +7,5 @@ export const getToplist = <T extends TGetToplistBody>(body: T) => {
     {
       params: body,
     }
-  )
+  ).then(res => res.data)
 }

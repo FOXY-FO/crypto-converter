@@ -1,9 +1,5 @@
-import { Currencies } from "ts-money"
 import { ResponseCodes } from "../"
-import { TCoin } from "../../types"
-
-type TCurrencies = typeof Currencies
-type TCurrenciesSymbols = keyof TCurrencies
+import { TCoin, TCurrenciesSymbols } from "../../types"
 
 export type TGetToplistBody = {
   tsym: TCurrenciesSymbols
@@ -14,7 +10,7 @@ export type TGetToplistBody = {
   sign?: boolean
 }
 
-export type TGetToplistResponse<TCurrency extends string = "USD"> = {
+export type TGetToplistResponse<TCurrency extends TCurrenciesSymbols = "USD"> = {
   Message: string
   Type: ResponseCodes
   MetaData: {

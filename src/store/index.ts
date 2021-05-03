@@ -1,11 +1,13 @@
 import { Action, applyMiddleware, combineReducers, createStore } from "redux"
 import thunkMiddleware, { ThunkAction } from "redux-thunk"
 import { appReducer } from "./app/reducer"
+import { coinReducer } from "./coin/reducer"
 import { tableReducer } from "./table/reducer"
 
 const rootReducer = combineReducers({
   table: tableReducer,
-  app: appReducer
+  app: appReducer,
+  coin: coinReducer,
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

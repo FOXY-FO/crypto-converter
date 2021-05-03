@@ -1,0 +1,16 @@
+.preloader {
+  font-size: 70px;
+
+  &__fullScreen {
+    @apply bg-white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

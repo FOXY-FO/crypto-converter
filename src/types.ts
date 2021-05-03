@@ -29,7 +29,7 @@ type TCoinInfo = {
   DocumentType: string
 }
 
-type TRawCoin = {
+export type TRawCoin = {
   TYPE: string
   MARKET: string
   FROMSYMBOL: string
@@ -77,7 +77,7 @@ type TRawCoin = {
   IMAGEURL: string
 }
 
-type TDisplayCoin = {
+export type TDisplayCoin = {
   FROMSYMBOL: string
   TOSYMBOL: string
   MARKET: string
@@ -122,7 +122,7 @@ type TDisplayCoin = {
   IMAGEURL: string
 }
 
-export type TCoin<TCurrency extends TCurrenciesSymbols = "USD"> = {
+export type TCoin<TCurrency extends TCurrenciesSymbols> = {
   CoinInfo: TCoinInfo
   RAW: {
     [key in TCurrency]: TRawCoin

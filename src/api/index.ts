@@ -9,5 +9,19 @@ export const instance = axios.create({
 
 export enum ResponseCodes {
   Success = 100,
-  Error = 2
+  Error = 2,
+}
+
+export enum ErrorCodes {
+  Error = 2,
+}
+
+export type ErrorResponse = {
+  Response: string
+  Message: string
+  HasWarning: boolean
+  Type: ErrorCodes
+  RateLimit: object
+  Data: object
+  ParamWithError: string
 }

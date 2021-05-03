@@ -1,8 +1,8 @@
-import { TCoin } from "../../types"
+import { TCoin, TCurrenciesSymbols } from "../../types"
 import { ActionsTypes } from "./actions"
 
 const initialState = {
-  coins: [] as TCoin[],
+  coins: [] as TCoin<TCurrenciesSymbols>[],
   isFetching: false,
 }
 

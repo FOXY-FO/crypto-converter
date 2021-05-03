@@ -1,0 +1,55 @@
+import { InferActionsTypes, TBaseThunk } from ".."
+import { ErrorResponse } from "../../api"
+import { getMultipleSymbolFullData } from "../../api/price"
+import { TGetMultipleSymbolFullDataBody } from "../../api/price/types"
+import { displayError } from "../app/actions"
+
+const actions = {
+  setImage: (image: string | null) =>
+    ({
+      type: "coin/SET_IMAGE",
+      payload: { image },
+    } as const),
+  setName: (name: string | null) =>
+    ({
+      type: "coin/SET_NAME",
+      payload: {
+        name,
+      },
+    } as const),
+  setSymbol: (symbol: string | null) =>
+    ({
+      type: "coin/SET_SYMBOL",
+      payload: { symbol },
+    } as const),
+  setUsdRate: (usdRate: number | null) =>
+    ({
+      type: "coin/SET_USD_RATE",
+      payload: { usdRate },
+    } as const),
+}
+
+export const getSymbolData = (
+  body: TGetMultipleSymbolFullDataBody
+): TThunk => async (dispatch) => {
+  try {
+    const data = await getMultipleSymbolFullData<TGetMultipleSymbolFullDataBody>(
+      body
+    )
+    if (data.DISPLAY && data.RAW) {
+      dispatch(actions.setImage(data.DISPLAY[body.fsyms][body.tsyms].IMAGEURL))
+      dispatch(actions.setName(data.RAW[body.fsyms][body.tsyms].FROMSYMBOL))
+      dispatch(actions.setSymbol(data.RAW[body.fsyms][body.tsyms].FROMSYMBOL))
+      dispatch(actions.setUsdRate(data.RAW[body.fsyms][body.tsyms].PRICE))
+    } else {
+      // @ts-expect-error
+      dispatch(displayError((data as ErrorResponse).Message))
+    }
+  } catch (e) {
+    const data: ErrorResponse = e.response.data
+    dispatch(displayError(data.Message))
+  }
+}
+
+export type ActionsTypes = InferActionsTypes<typeof actions>
+type TThunk = TBaseThunk<ActionsTypes, void>

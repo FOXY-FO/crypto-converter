@@ -10,7 +10,7 @@ export type TGetToplistBody = {
   sign?: boolean
 }
 
-export type TGetToplistResponse<TCurrency extends TCurrenciesSymbols = "USD"> = {
+export type TGetToplistResponse<TCurrency extends TCurrenciesSymbols> = {
   Message: string
   Type: ResponseCodes
   MetaData: {

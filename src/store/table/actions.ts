@@ -6,7 +6,7 @@ import { ResponseCodes } from "../../api"
 import { displayError } from "../app/actions"
 
 export const actions = {
-  setCoins: (coins: TCoin[]) =>
+  setCoins: (coins: TCoin<TCurrenciesSymbols>[]) =>
     ({
       type: "table/SET_COINS",
       payload: { coins },

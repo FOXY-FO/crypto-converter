@@ -1,9 +1,13 @@
-import { Table } from "../Table/Table"
+import React from "react"
+import { Route } from "react-router-dom"
+import { routes } from "../../routes"
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
-    <div>
-      <Table />
-    </div>
+    <>
+      {routes.map((route) => (
+        <Route {...route} />
+      ))}
+    </>
   )
 }

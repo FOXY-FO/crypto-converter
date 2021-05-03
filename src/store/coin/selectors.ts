@@ -15,3 +15,11 @@ export const getSymbol = (state: TAppState) => {
 export const getUsdRate = (state: TAppState) => {
   return state.coin.usdRate
 }
+
+export const getIsCoinFetching = (state: TAppState) => {
+  return state.coin.isFetching
+}
+
+export const getIsSuccess = (state: TAppState) => {
+  return state.coin.isSuccess
+}

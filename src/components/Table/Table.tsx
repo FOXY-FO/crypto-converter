@@ -1,13 +1,17 @@
-import React, { useEffect } from "react"
+import { useCallback, useEffect } from "react"
+import { useHistory } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import { requestCoins, actions } from "../../store/table/actions"
 import { getAreCoinsFetching, getCoins } from "../../store/table/selectors"
 import { getImageSource } from "../../utils/helpers/image-helpers"
+import { getSymbolData } from "../../store/coin/actions"
 import { Preloader } from "../Preloader/Preloader"
 import { Row } from "./Row/Row"
+import { TCurrenciesSymbols } from "../../types"
 
 export const Table = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const coins = useSelector(getCoins)
   const isFetching = useSelector(getAreCoinsFetching)
 
@@ -18,6 +22,18 @@ export const Table = () => {
       dispatch(actions.reset())
     }
   }, []) // eslint-disable-line
+
+  const requestCurrency = useCallback(
+    (currencySymbol: TCurrenciesSymbols, currency: TCurrenciesSymbols) => {
+      dispatch(
+        getSymbolData({
+          fsyms: currencySymbol,
+          tsyms: currency,
+        })
+      )
+    },
+    [dispatch]
+  )
 
   if (isFetching) return <Preloader />
   if (!coins.length) return <div>No coins</div>
@@ -42,6 +58,16 @@ export const Table = () => {
             name={coin.CoinInfo.FullName}
             symbol={coin.CoinInfo.Internal}
             usdRate={coin.DISPLAY.USD.PRICE}
+            // couldn't find all the crypto currencies' types
+            // so I put the "ts-expect-error" signature
+            onClick={() => {
+              // @ts-expect-error
+              requestCurrency(coin.CoinInfo.Internal, "USD")
+              history.push({
+                pathname: "/coin",
+                search: `?name=${coin.CoinInfo.FullName}`,
+              })
+            }}
           />
         ))}
       </tbody>

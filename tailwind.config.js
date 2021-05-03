@@ -13,6 +13,9 @@ module.exports = {
   darkMode: false,
   theme: {
     colors,
+    container: {
+      center: true,
+    },
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
       serif: ["sans"],

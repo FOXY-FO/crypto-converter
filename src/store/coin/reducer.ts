@@ -5,6 +5,8 @@ const initialState = {
   name: null as string | null,
   symbol: null as string | null,
   usdRate: null as number | null,
+  isFetching: false,
+  isSuccess: false,
 }
 
 export const coinReducer = (state = initialState, action: ActionsTypes) => {
@@ -13,9 +15,15 @@ export const coinReducer = (state = initialState, action: ActionsTypes) => {
     case "coin/SET_USD_RATE":
     case "coin/SET_NAME":
     case "coin/SET_IMAGE":
+    case "coin/SET_IS_SUCCESS":
+    case "coin/SET_IS_FETCHING":
       return {
         ...state,
         ...action.payload,
+      }
+    case "coin/RESET":
+      return {
+        ...initialState,
       }
     default:
       return state

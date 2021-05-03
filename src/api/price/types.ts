@@ -1,13 +1,13 @@
 import { TCurrenciesSymbols, TRawCoin, TDisplayCoin } from "../../types"
 
 export type TGetMultipleSymbolFullDataBody = {
-  tryConversion: boolean
+  tryConversion?: boolean
   fsyms: TCurrenciesSymbols
   tsyms: TCurrenciesSymbols
-  relaxedValidation: boolean
-  e: string
-  extraParams: string
-  sign: boolean
+  relaxedValidation?: boolean
+  e?: string
+  extraParams?: string
+  sign?: boolean
 }
 
 export type TGetMultipleSymbolFullDataResponse<

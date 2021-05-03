@@ -6,11 +6,11 @@ export const routes: RouteProps[] = [
   {
     path: "/",
     component: HomePage,
-    // exact: true,
+    exact: true,
   },
   {
     path: "/coin",
     component: CoinPage,
-    // exact: true,
+    exact: true,
   },
 ]

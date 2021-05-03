@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react"
 import { useHistory } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
+import s from "./Table.module.scss"
 import { requestCoins, actions } from "../../store/table/actions"
 import { getAreCoinsFetching, getCoins } from "../../store/table/selectors"
 import { getImageSource } from "../../utils/helpers/image-helpers"
@@ -39,13 +40,13 @@ export const Table = () => {
   if (!coins.length) return <div>No coins</div>
 
   return (
-    <table>
+    <table className={s.table}>
       <thead>
         <tr>
           <td>№</td>
           <td>Image</td>
           <td>Name</td>
-          <td>Caption</td>
+          <td>Symbol</td>
           <td>USD</td>
         </tr>
       </thead>

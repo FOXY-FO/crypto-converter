@@ -1,0 +1,30 @@
+.page {
+  display: flex;
+}
+
+.image {
+  margin-right: 2rem;
+  width: 300px;
+
+  img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+}
+
+.name {
+  font-size: 3rem;
+}
+
+.symbol {
+  @apply text-verdigris-100;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.rate {
+  color: #91cc6f;
+  font-size: 1.25rem;
+}

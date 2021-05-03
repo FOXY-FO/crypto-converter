@@ -19,7 +19,7 @@ export const Row: React.FC<Props> = ({
   onClick = () => {},
 }) => {
   return (
-    <tr onClick={onClick}>
+    <tr className={s.row} onClick={onClick}>
       <td>{number}</td>
       <td>
         <div className={s.image}>

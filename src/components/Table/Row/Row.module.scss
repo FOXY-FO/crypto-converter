@@ -1,3 +1,16 @@
+.row {
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    @apply text-verdigris-200;
+  }
+
+  td {
+    padding: 0.5rem 0;
+  }
+}
+
 .image {
   height: 40px;
 
